@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comissões de Arte</title>
+<style>
+:root {
+  --ink: #25434a;
+  --accent: #6c9e9a;
+  --soft: #e7f1e8;
+  --paper: #fffdf6;
+  --pink: #f3d8d2;
+  --radius: 28px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  line-height: 1.65;
+}
+a { color: inherit; text-decoration: none; }
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 5%;
+  color: white;
+  z-index: 2;
+  background: linear-gradient(#21104c55, transparent);
+}
+nav {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 900; }
+.navlinks { display: flex; gap: 8px; flex-wrap: wrap; }
+.navlinks a {
+  border: 1px solid #ffffff80;
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: .9rem;
+}
+.hero {
+  min-height: 100vh;
+  padding: 140px 22px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: linear-gradient(140deg, #35135f, #6550d8 55%, #a9b7ff);
+}
+.hero-copy {
+  max-width: 850px;
+  padding: clamp(25px, 5vw, 60px);
+  border-radius: 38px;
+  background: #ffffff18;
+  border: 1px solid #ffffff55;
+  box-shadow: 0 20px 80px #21104c25;
+  backdrop-filter: blur(8px);
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: .75rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.hero .eyebrow { color: white; }
+h1, h2, h3, p { margin-top: 0; }
+h1 {
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.15; }
+h3 { margin-bottom: 8px; }
+.hero p { font-size: 1.1rem; }
+.cta {
+  display: inline-block;
+  background: white;
+  color: #49337c;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 800;
+  margin-top: 8px;
+}
+.section {
+  max-width: 1120px;
+  margin: auto;
+  padding: 75px 22px 10px;
+  scroll-margin-top: 30px;
+}
+.section-head { max-width: 650px; margin-bottom: 26px; }
+.section-head p { opacity: .8; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.card {
+  background: white;
+  border: 1px solid #25434a12;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 12px 30px #24444a12;
+  transition: transform .2s;
+}
+.card:hover { transform: translateY(-4px); }
+.icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: var(--pink);
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  margin-bottom: 15px;
+}
+.tag {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: var(--soft);
+  font-size: .8rem;
+  margin: 3px;
+}
+.price { font-size: 1.8rem; font-weight: 900; }
+.muted { opacity: .7; font-size: .93rem; }
+.terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.terms .card { background: var(--soft); }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.art {
+  aspect-ratio: 4 / 5;
+  border-radius: 25px;
+  background: var(--soft);
+  border: 2px dashed #a5c6bd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18px;
+  overflow: hidden;
+}
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.banner {
+  margin-top: 24px;
+  min-height: 220px;
+  border-radius: 30px;
+  background: var(--pink);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 28px;
+}
+.thanks {
+  text-align: center;
+  background: var(--soft);
+  border-radius: 36px;
+  padding: clamp(32px, 7vw, 76px);
+  margin: 80px 22px 0;
+}
+footer { text-align: center; padding: 35px 15px; opacity: .7; }
+.customizer {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 5;
+  background: white;
+  border: 1px solid #25434a20;
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 10px 35px #102d3520;
+  max-width: 205px;
+}
+.customizer summary { cursor: pointer; font-weight: 900; }
+.swatches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+.swatches label { font-size: .75rem; }
+.swatches input { width: 27px; height: 27px; display: block; }
+@media(max-width: 750px) {
+  .grid, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .terms { grid-template-columns: 1fr; }
+}
+@media(max-width: 500px) {
+  .grid, .gallery { grid-template-columns: 1fr; }
+  nav { align-items: flex-start; }
+  .navlinks a { font-size: .8rem; padding: 6px 9px; }
+  .customizer { max-width: 175px; right: 6px; bottom: 6px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="brand" href="#inicio">✿ SEU NOME / ARTE</a>
+    <div class="navlinks">
+      <a href="#pedidos">Pedidos</a>
+      <a href="#extras">Extras</a>
+      <a href="#precos">Preços</a>
+      <a href="#termos">Termos</a>
+      <a href="#galeria">Galeria</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-copy">
+      <div class="eyebrow">Comissões abertas · 20XX</div>
+      <h1>Arte feita com carinho, do jeitinho que você imaginou.</h1>
+      <p>Oi! Eu sou <strong>Seu Nome</strong>, artista independente. Aqui você encontra meus tipos de comissão, valores, serviços extras e todas as informações para pedir sua arte.</p>
+      <a class="cta" href="#pedidos">Vamos criar algo? ↗</a>
+    </div>
+  </section>
+
+  <section class="section" id="pedidos">
+    <div class="section-head">
+      <div class="eyebrow">01 · Escolha sua ideia</div>
+      <h2>Tipos de pedidos</h2>
+      <p>Escolha o estilo de arte que combina com sua ideia.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="icon">✏️</div>
+        <h3>Sketch / Esboço</h3>
+        <p>Um desenho leve, com linhas soltas e foco na ideia.</p>
+        <span class="tag">Personagem</span><span class="tag">Rascunho</span>
+      </article>
+      <article class="card">
+        <div class="icon">🎨</div>
+        <h3>Ilustração colorida</h3>
+        <p>Arte finalizada com cores, sombras e detalhes.</p>
+        <span class="tag">Colorido</span><span class="tag">Digital</span>
+      </article>
+      <article class="card">
+        <div class="icon">🌷</div>
+        <h3>Ícone / Retrato</h3>
+        <p>Uma composição feita para destacar seu personagem.</p>
+        <span class="tag">Avatar</span><span class="tag">Retrato</span>
+      </article>
+    </div>
+    <div class="banner"><div><h3>♡ Um pouquinho do meu universo ♡</h3><p>Adicione aqui uma ilustração sua.</p></div></div>
+  </section>
+
+  <section class="section" id="extras">
+    <div class="section-head">
+      <div class="eyebrow">02 · Personalize</div>
+      <h2>Serviços extras</h2>
+      <p>Adicione opções ao seu pedido principal.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="icon">✨</div><h3>Personagem adicional</h3><p>Para cenas com mais de um personagem.</p><p class="muted">A partir de R$ XX</p></article>
+      <article class="card"><div class="icon">🌿</div><h3>Fundo detalhado</h3><p>Um cenário especial para completar a composição.</p><p class="muted">A partir de R$ XX</p></article>
+      <article class="card"><div class="icon">⚡</div><h3>Prazo prioritário</h3><p>Consulte a disponibilidade antes de solicitar.</p><p class="muted">A combinar</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="precos">
+    <div class="section-head">
+      <div class="eyebrow">03 · Investimento</div>
+      <h2>Tabela de preços</h2>
+      <p>Substitua os valores de exemplo pelos seus preços reais.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><h3>Esboço</h3><p class="price">R$ XX</p><p>• 1 personagem<br>• Fundo simples<br>• 1 ajuste</p></article>
+      <article class="card" style="background:var(--soft)"><h3>Colorido</h3><p class="price">R$ XX</p><p>• 1 personagem<br>• Cores e sombras<br>• 2 ajustes</p></article>
+      <article class="card"><h3>Ilustração completa</h3><p class="price">R$ XX</p><p>• Composição detalhada<br>• Fundo simples<br>• 2 ajustes</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="termos">
+    <div class="section-head">
+      <div class="eyebrow">04 · Antes de pedir</div>
+      <h2>Termos de serviço</h2>
+      <p>Leia as regras antes de fazer um pedido.</p>
+    </div>
+    <div class="terms">
+      <article class="card"><h3>♡ Pagamento</h3><p>Informe os métodos aceitos e quando o pagamento deve ser feito.</p></article>
+      <article class="card"><h3>♡ Prazo</h3><p>Informe seu prazo médio e como avisará sobre atrasos.</p></article>
+      <article class="card"><h3>♡ Alterações</h3><p>Explique quantas revisões estão incluídas no pedido.</p></article>
+      <article class="card"><h3>♡ Uso da arte</h3><p>Especifique as regras de uso pessoal, comercial e créditos.</p></article>
+      <article class="card"><h3>♡ O que aceito</h3><p>Liste os temas, personagens e estilos que você aceita desenhar.</p></article>
+      <article class="card"><h3>♡ O que não aceito</h3><p>Liste os temas ou pedidos que você não realiza.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="galeria">
+    <div class="section-head">
+      <div class="eyebrow">05 · Meu trabalho</div>
+      <h2>Exemplos de arte</h2>
+      <p>Substitua os espaços abaixo pelas imagens das suas artes.</p>
+    </div>
+    <div class="gallery">
+      <div class="art">Exemplo 01<br>Adicione sua imagem</div>
+      <div class="art">Exemplo 02<br>Adicione sua imagem</div>
+      <div class="art">Exemplo 03<br>Adicione sua imagem</div>
+      <div class="art">Exemplo 04<br>Adicione sua imagem</div>
+      <div class="art">Exemplo 05<br>Adicione sua imagem</div>
+      <div class="art">Exemplo 06<br>Adicione sua imagem</div>
+    </div>
+  </section>
+
+  <section class="thanks">
+    <div class="eyebrow">Obrigada por chegar até aqui</div>
+    <h2>Vamos transformar sua ideia em arte? ♡</h2>
+    <p>Obrigada por apoiar meu trabalho! Para fazer um pedido, entre em contato pelo link abaixo.</p>
+    <a class="cta" href="https://instagram.com/" target="_blank" rel="noreferrer">Fazer um pedido ↗</a>
+  </section>
+</main>
+
+<footer>Feito com carinho · © <span id="year"></span> Seu Nome / Arte</footer>
+
+<details class="customizer" open>
+  <summary>🎨 Escolher cores</summary>
+  <div class="swatches">
+    <label>Fundo <input type="color" data-var="--paper" value="#fffdf6"></label>
+    <label>Texto <input type="color" data-var="--ink" value="#25434a"></label>
+    <label>Principal <input type="color" data-var="--accent" value="#6c9e9a"></label>
+    <label>Blocos <input type="color" data-var="--soft" value="#e7f1e8"></label>
+    <label>Rosa <input type="color" data-var="--pink" value="#f3d8d2"></label>
+  </div>
+  <button id="resetColors" type="button">Restaurar cores</button>
+</details>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const defaults = {
+  '--paper': '#fffdf6',
+  '--ink': '#25434a',
+  '--accent': '#6c9e9a',
+  '--soft': '#e7f1e8',
+  '--pink': '#f3d8d2'
+};
+
+document.querySelectorAll('[data-var]').forEach(input => {
+  input.addEventListener('input', () => {
+    document.documentElement.style.setProperty(input.dataset.var, input.value);
+  });
+});
+
+document.getElementById('resetColors').addEventListener('click', () => {
+  document.querySelectorAll('[data-var]').forEach(input => {
+    input.value = defaults[input.dataset.var];
+    document.documentElement.style.setProperty(input.dataset.var, input.value);
+  });
+});
+</script>
+</body>
+</html>
+
